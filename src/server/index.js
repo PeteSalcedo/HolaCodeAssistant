@@ -11,6 +11,7 @@ AWS.config.update({region:'us-east-1'});
 const multer = require("multer");
 const fs = require("fs");
 const att = require('../database/mysql.js');
+const messagesArr = [];
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -63,7 +64,15 @@ io.on('connection', (socket) => {
         createMessage(socket, body, 'normal', message => {
             //Sends the message to the clients
             io.emit('message', message)
+            att.addMessages(message.author, message.createdAt, message.body, (err, results) => {
+              if (err) {
+                console.log(err)
+              } else {
+                console.log(results);
+              }
+            });
         })
+
     })
 
     //When the client emits 'username exists', this executes

@@ -10,10 +10,11 @@ import {Container} from "mdbreact";
 
 const socket = io.connect();
 
-firebase.initializeApp({
-apiKey: "AIzaSyB98qiRdWSgLuxVWPdfJSxJeO7luYrP7ZQ",
-authDomain: "holapancho-3bcee.firebaseapp.com"
-});
+  firebase.initializeApp({
+  apiKey:"AIzaSyDtgcQFZxrU5Dvre8bGryTJFZpJfwURwGY",
+  authDomain: "holacodeassistant.firebaseapp.com"
+  });
+
 
 class App extends Component {
     constructor(props) {
